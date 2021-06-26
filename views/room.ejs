@@ -1,0 +1,56 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/room-style.css">
+  <script>
+
+   const ROOM_ID = "<%= roomId %>"
+
+
+     
+  </script>
+  
+  <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+ 
+  <script src="/socket.io/socket.io.js" defer></script>
+   <script  type="text/javascript" src="/script.js" defer></script>
+
+  <title>Document</title>
+  <style>
+    #video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,500px);
+      grid-auto-rows: 400px;
+    }
+    
+    video {
+      width: 95%;
+      height: 95%;
+      object-fit: cover;
+      /*padding: 10px;*/
+    }
+
+    .container { position:relative; }
+.container video {
+    position:relative;
+    z-index:0;
+}
+.overlay {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1;
+}
+  </style>
+</head>
+<body>
+
+  <div id="video-grid"></div>
+  <button type="button" class="btn btn-secondary" id ="bt" onclick=copyId()>Copy meeting link</button>
+  <button type="button" class="btn btn-secondary" id ="bt" onclick=endCall()>End meeting</button>
+</body>
+</html>
