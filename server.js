@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
+const port = process.env.PORT || 9000
 
 
 const { v4: uuidv4 } = require('uuid');
@@ -16,7 +17,8 @@ app.get('/', (req, res)=>{
   res.render('homepage');
 });
  
-let url='http://localhost:9000/engage/';
+
+// let url='http://localhost:9000/engage/';
 
 
 
@@ -24,15 +26,15 @@ let url='http://localhost:9000/engage/';
 app.get('/newmeet', (req,res) => {
   let id = uuidv4();
   res.redirect(`/engage/${id}`);
-  roomIds[url+id] = 1;
+  roomIds[id] = 1;
 });
 
 app.get('/engage/:room' ,(req, res) => {
-   if(roomIds[url+req.params.room]) {
+   // if(roomIds[req.params.room]) {
     res.render('room', {roomId: req.params.room});
-  }else{
-    res.send("<h2>Entered Room Id is inactive, check it again or start a new meeting</h2>");
-  }
+  // }else{
+  //   res.send("<h2>Entered Room Id is inactive, check it again or start a new meeting</h2>");
+  // }
   
 });
 
@@ -49,4 +51,4 @@ io.on('connection', socket => {
   })
 })
 
-server.listen(9000, () => console.log('Server is running at 9000'));
+server.listen(port, () => console.log(`Server is running at ${port}`));

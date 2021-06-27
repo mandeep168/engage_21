@@ -129,7 +129,7 @@ function addVideoStream(video,container,div,stream) {
 
 function endCall(){
 	socket.emit('user-disconnected', PEER_ID)
-	window.location = 'http://localhost:9000/endPage';
+	//window.location = 'http://localhost:9000/endPage';
 }
 
 
